@@ -15,20 +15,22 @@ const ligatureCodes = {
   explore: "&#xe8b6;",
   inbox: "&#xe156;",
   person: "&#xe7fd;",
+  key: "&#xe73c;",
+  password: "&#xe73c;",
 };
 
 /*
   Attempt to change ligature to raw icon
 */
 
-const Icon = ({ children }) => {
+const Icon = ({ children, className }) => {
   const icon = children.startsWith("&#x")
     ? children
     : ligatureCodes[children] || children;
 
   return (
     <span
-      className={classNames("icon", styles.icon)}
+      className={classNames("icon", styles.icon, className)}
       dangerouslySetInnerHTML={{ __html: icon }}
     ></span>
   );
