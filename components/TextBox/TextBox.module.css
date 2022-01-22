@@ -1,0 +1,57 @@
+.textBox {
+  margin-bottom: 0.2em;
+  margin-top: 1em;
+  width: 100%;
+}
+
+.textBox input {
+  padding: 0.4em 0.4em;
+  width: 100%;
+
+  font-size: inherit;
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  border-top-left-radius: 0;
+}
+
+.textBox input:focus {
+  border-color: rgb(0, 0, 0);
+  outline: none;
+}
+
+.textBox .label {
+  position: absolute;
+  padding: 0 0.5em;
+  margin-bottom: 0.2rem;
+  transform: translateY(calc(-100% + 1px));
+
+  font-size: 0.75em;
+  color: var(--border);
+  background: rgb(255, 255, 255);
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: white;
+}
+
+.textBox:focus-within .label {
+  border-color: rgb(0, 0, 0);
+}
+
+.inputIcon {
+  position: absolute;
+  transform: translate(0.2rem, 0.08em);
+  z-index: 1;
+
+  font-size: 1.9em;
+  color: var(--border);
+}
+
+.textBox:focus-within .inputIcon {
+  filter: brightness(0.7);
+}
+
+.inputWithIcon {
+  padding-left: 2.3em !important;
+}
