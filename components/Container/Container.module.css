@@ -1,9 +1,10 @@
 .container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin: 0 auto;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  padding-top: var(--nav-height);
 }
 
 @media (min-width: 500px) {
