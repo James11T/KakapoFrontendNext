@@ -1,42 +1,33 @@
 .textBox {
-  margin-bottom: 0.2em;
   margin-top: 1em;
   width: 100%;
 }
 
 .textBox input {
   padding: 0.4em 0.4em;
+  margin: 0;
   width: 100%;
-
-  font-size: inherit;
   border: 1px solid var(--border);
   border-radius: 0.4rem;
   border-top-left-radius: 0;
-}
 
-.textBox input:focus {
-  border-color: rgb(0, 0, 0);
-  outline: none;
+  font-size: inherit;
 }
 
 .textBox .label {
   position: absolute;
-  padding: 0 0.5em;
-  margin-bottom: 0.2rem;
+  padding: 0 0.75em;
   transform: translateY(calc(-100% + 1px));
-
-  font-size: 0.75em;
-  color: var(--border);
-  background: rgb(255, 255, 255);
   border: 1px solid var(--border);
   border-radius: 0.4rem;
+
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-bottom: white;
-}
+  border-bottom: none;
 
-.textBox:focus-within .label {
-  border-color: rgb(0, 0, 0);
+  font-size: 0.75em;
+  color: var(--text-primary);
+  background: rgb(255, 255, 255);
 }
 
 .inputIcon {
@@ -45,7 +36,7 @@
   z-index: 1;
 
   font-size: 1.9em;
-  color: var(--border);
+  color: var(--text-primary);
 }
 
 .textBox:focus-within .inputIcon {
@@ -54,4 +45,12 @@
 
 .inputWithIcon {
   padding-left: 2.3em !important;
+}
+
+.textBox:focus-within .label,
+.textBox:focus-within input,
+.textBox:hover .label,
+.textBox:hover input {
+  border-color: rgb(0, 0, 0);
+  outline: none;
 }

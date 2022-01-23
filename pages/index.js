@@ -3,8 +3,9 @@ import Head from "next/head";
 
 import { userContext } from "./_app";
 
+import styles from "../styles/index.module.css";
+
 const Home = ({ count }) => {
-  //const { user, setUser } = useContext(userContext);
   const { user } = useContext(userContext);
 
   return (
@@ -13,7 +14,7 @@ const Home = ({ count }) => {
         <title>Kakapo | Home</title>
       </Head>
       <div>Join the {count} other users who already love Kakapo!</div>
-      <div>Currently signed in: {user.isAuthenticated ? "True" : "False"}</div>
+      <div className={styles.testing}></div>
     </>
   );
 };

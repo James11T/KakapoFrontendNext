@@ -1,4 +1,5 @@
 import classNames from "classnames";
+
 import styles from "./Icon.module.css";
 
 const ligatureCodes = {

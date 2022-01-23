@@ -2,6 +2,8 @@
   /* Colors */
   --main-green: rgb(130, 173, 90);
   --details: rgb(190, 190, 190);
+  --border: rgb(120, 120, 120);
+  --text-primary: rgb(60, 60, 60);
 
   /* Values */
   --nav-height: 2.75rem;
@@ -46,7 +48,7 @@ h6 {
   font-family: "Material Icons Round";
   font-weight: inherit;
   font-style: normal;
-  font-size: 1.4em;
+  font-size: 1.8em;
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
