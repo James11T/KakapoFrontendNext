@@ -1,0 +1,27 @@
+.button {
+  --button-lift: 3px;
+
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.4rem 0.2rem;
+  border: 1px solid var(--border);
+  border-radius: 0.4em;
+  font-size: inherit;
+
+  background: rgb(255, 255, 255);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.button:focus,
+.button:hover {
+  outline: none;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.button:active {
+  background: rgb(245, 245, 245);
+}
