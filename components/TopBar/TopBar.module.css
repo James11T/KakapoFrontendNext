@@ -1,0 +1,40 @@
+.topBar {
+  position: fixed;
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+  background: white;
+  z-index: 100;
+}
+
+.topBarHeader {
+  display: flex;
+  align-items: center;
+  margin: 0.3rem 0;
+}
+
+.topBarHeader button {
+  display: flex;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+  color: black;
+  font-size: 1em;
+}
+
+.topBarBranding {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0.6rem;
+
+  font-size: 1.4rem;
+}
+
+.topBarBranding img {
+  height: 1.5em;
+}

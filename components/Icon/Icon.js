@@ -18,6 +18,10 @@ const ligatureCodes = {
   person: "&#xe7fd;",
   key: "&#xe73c;",
   password: "&#xe73c;",
+  login: "&#xea77;",
+  signin: "&#xea77;",
+  right: "&#xe5cc;",
+  left: "&#xe5cb;",
 };
 
 /*

@@ -1,10 +1,15 @@
+import { useState } from "react";
+import className from "classnames";
+import Link from "next/link";
+
 import NavLink from "./NavLink/NavLink";
+import Icon from "../Icon/Icon";
 
 import styles from "./Nav.module.css";
 
-const Nav = () => {
+const Nav = ({ open = false }) => {
   return (
-    <nav className={styles.nav}>
+    <nav className={className(styles.nav, { [styles.navOpen]: open })}>
       <ul>
         <li>
           <NavLink icon="home" href="/">

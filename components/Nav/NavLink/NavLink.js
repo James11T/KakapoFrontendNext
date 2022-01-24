@@ -8,8 +8,9 @@ const NavLink = ({ icon, children, href }) => {
   return (
     <Link href={href} className={styles.navLink}>
       <a className={styles.navLinkContainer}>
+        <Icon className={styles.focusIcon}>right</Icon>
         <Icon>{icon}</Icon>
-        <span>{children}</span>
+        <span className={styles.navLinkText}>{children}</span>
       </a>
     </Link>
   );

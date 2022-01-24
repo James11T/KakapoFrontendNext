@@ -1,7 +1,30 @@
 .navLinkContainer {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.3rem;
   font-size: 1.2rem;
+
+  transition: transform 75ms;
+}
+
+.navLinkContainer .navLinkText {
+  position: relative;
+  transition: transform 75ms;
+}
+
+.navLinkContainer:hover .navLinkText {
+  transform: translateX(0.5rem);
+}
+
+.navLinkContainer:focus-visible {
+  transform: translateX(1.5em);
+}
+
+.focusIcon {
+  position: absolute;
+
+  transform: translateX(-100%);
+
+  transition: transform 750ms;
 }
