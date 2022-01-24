@@ -9,6 +9,8 @@ const CheckBox = ({
   onInput,
   onChange,
   checkedText,
+  focusIcon,
+  name,
 }) => {
   const [isChecked, setIsChecked] = useState(defaultValue || false);
 
@@ -22,13 +24,16 @@ const CheckBox = ({
   };
 
   return (
-    <label className={styles.checkBox}>
+    <label className={styles.checkBox} htmlFor={name}>
+      {focusIcon && <Icon className={styles.focusIcon}>right</Icon>}
       {!!checkedText && isChecked ? checkedText : children}
       <input
         type="checkbox"
         onInput={handleOnInput}
         onChange={handleOnChange}
         defaultChecked={defaultValue ? "checked" : "unchecked"}
+        name={name}
+        id={name}
       />
       <span className={styles.checkBoxBorder}>
         <Icon className={styles.checkIcon}>check</Icon>

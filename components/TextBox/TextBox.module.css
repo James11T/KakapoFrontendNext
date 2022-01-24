@@ -1,5 +1,5 @@
 .textBox {
-  margin-top: 1em;
+  padding-top: 1em;
   width: 100%;
 }
 
@@ -8,7 +8,7 @@
   margin: 0;
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: 0.4rem;
+  border-radius: var(--border-radius);
   border-top-left-radius: 0;
 
   font-size: inherit;
@@ -19,7 +19,7 @@
   padding: 0 0.75em;
   transform: translateY(calc(-100% + 1px));
   border: 1px solid var(--border);
-  border-radius: 0.4rem;
+  border-radius: var(--border-radius);
 
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -53,4 +53,17 @@
 .textBox:hover input {
   border-color: rgb(0, 0, 0);
   outline: none;
+}
+
+.focusIcon {
+  position: absolute;
+  z-index: -1;
+  transform: translateX(0);
+
+  font-size: 2em;
+  transition: transform 75ms;
+}
+
+.textBox:focus-within .focusIcon {
+  transform: translateX(-90%);
 }
