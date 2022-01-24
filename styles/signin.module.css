@@ -1,0 +1,37 @@
+.signInArea {
+  width: min(40rem, calc(100% - 2rem));
+  margin: 0 auto;
+  margin-top: 1em;
+}
+
+.formHeading {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 100;
+}
+
+.signInForm {
+  margin-top: 2em;
+}
+
+.signInForm fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.signInForm ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.signInForm button {
+  width: min(23rem, 100%);
+  margin: 0 auto;
+}
+
+.formError {
+  color: rgb(179, 38, 22);
+  min-height: 1.3rem;
+}

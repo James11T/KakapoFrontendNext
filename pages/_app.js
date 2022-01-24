@@ -1,19 +1,61 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 import Head from "next/head";
 import Container from "../components/Container/Container";
 import Nav from "../components/nav/Nav";
+
 import "../styles/globals.css";
+import TopBar from "../components/TopBar/TopBar";
 
 const userContext = createContext();
 
 const App = ({ Component, pageProps }) => {
+  const [navOpen, setNavOpen] = useState(false);
+
   const [user, setUser] = useState({
     kakapo_id: "",
     display_name: "",
     token: "",
     isAuthenticated: false,
   });
+
+  useEffect(() => {
+    // Check for token is localStorage and sessionStorage
+    // Check validity
+
+    const token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
+
+    if (token) {
+      const fetchConfig = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      };
+
+      fetch("http://localhost:5000/api/v1/user/me", fetchConfig)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error || !data.user) {
+            return;
+          }
+
+          setUser({
+            kakapo_id: data.user.kakapo_id,
+            display_name: data.user.display_name,
+            token: token,
+            isAuthenticated: true,
+          });
+        });
+    }
+  }, []);
+
+  const handleNavToggle = (event) => {
+    setNavOpen((old) => !old);
+  };
 
   return (
     <>
@@ -27,7 +69,8 @@ const App = ({ Component, pageProps }) => {
         />
       </Head>
       <userContext.Provider value={{ user, setUser }}>
-        <Nav />
+        <Nav open={navOpen} />
+        <TopBar toggleNav={handleNavToggle} />
         <Container>
           <Component {...pageProps} />
         </Container>
