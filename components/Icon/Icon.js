@@ -24,6 +24,7 @@ const ligatureCodes = {
   left: "&#xe5cb;",
   email: "&#xe0e6;",
   personAdd: "&#xe7fe;",
+  science: "&#xea4b;",
 };
 
 /*
