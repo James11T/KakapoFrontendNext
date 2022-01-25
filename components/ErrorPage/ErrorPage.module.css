@@ -1,0 +1,38 @@
+.errorPage {
+  flex: 1 1 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10rem;
+}
+
+.errorHeader {
+  font-size: 16rem;
+  text-shadow: 0.3rem 0.3rem 1px var(--main-green);
+}
+
+.errorText {
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.errorText p {
+  font-size: 2.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.errorText a {
+  text-decoration: underline;
+  color: rgb(80, 80, 80);
+}
+
+.errorDivider {
+  height: 1px;
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 2.5rem;
+
+  background: rgb(150, 150, 150);
+}
