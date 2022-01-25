@@ -1,9 +1,9 @@
 import { useContext } from "react";
 
 import { userContext } from "./_app";
+import TextTruncator from "../components/TextTruncator/TextTruncator";
 
 import styles from "../styles/debug.module.css";
-import TextTruncater from "../components/TextTruncater/TextTruncater";
 
 const notSetText = "Not set";
 
@@ -30,7 +30,7 @@ const Debug = () => {
           <li>
             <h4>Token</h4>
             {user.token ? (
-              <TextTruncater maxLength={20}>{user.token}</TextTruncater>
+              <TextTruncator maxLength={20}>{user.token}</TextTruncator>
             ) : (
               notSetText
             )}
