@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useRouter } from "next/router";
 
 import { userContext } from "./_app";
 
@@ -9,8 +10,14 @@ import CheckBox from "../components/CheckBox/CheckBox";
 import styles from "../styles/signin.module.css";
 
 const SignIn = () => {
-  const [formErrors, setFormErrors] = useState({ kakapo_id: "", password: "" });
-  const { user, setUser } = useContext(userContext);
+  const router = useRouter();
+
+  const [formErrors, setFormErrors] = useState({
+    kakapo_id: "",
+    password: "",
+    general: "",
+  });
+  const { setUser } = useContext(userContext);
 
   const updateFormError = (field, error) => {
     return setFormErrors((old) => ({ ...old, [field]: error }));
@@ -34,6 +41,8 @@ const SignIn = () => {
       body: JSON.stringify(body),
     };
 
+    console.log(fetchOptions);
+
     fetch("http://localhost:5000/api/v1/auth/signin", fetchOptions)
       .then((res) => res.json())
       .then((data) => {
@@ -54,20 +63,19 @@ const SignIn = () => {
           }
           return;
         }
-        if (data.success) {
-          setUser({
-            kakapo_id: data.user.kakapo_id,
-            display_name: data.user.display_name,
-            token: data.token,
-            isAuthenticated: true,
-          });
-        }
+        setUser({
+          kakapo_id: data.user.kakapo_id,
+          display_name: data.user.display_name,
+          token: data.token,
+          isAuthenticated: true,
+        });
+        router.push("/");
       })
       .catch((error) => {
         console.error(error);
         updateFormError(
           "general",
-          "An error occurred when contacting the server."
+          "An error occurred when contacting when the server."
         );
       });
   };
