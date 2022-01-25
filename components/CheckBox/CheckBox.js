@@ -1,7 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 import Icon from "../Icon/Icon";
 
 import styles from "./CheckBox.module.css";
+
+/* 
+
+  Custom styled check box
+
+  Features:
+   - Default Value
+   - Focus Indicator
+   - Checked Text
+
+  Callbacks:
+   - onChange
+   - onInput
+
+  Use:
+   <CheckBox onChange={callback} onInput={callback} focusIcon={true / false} checkedText="I am on">Check Box text here</CheckBox>
+
+*/
 
 const CheckBox = ({
   children,

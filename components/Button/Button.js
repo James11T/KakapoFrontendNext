@@ -4,6 +4,22 @@ import Icon from "../Icon/Icon";
 
 import styles from "./Button.module.css";
 
+/* 
+
+  Custom styled button
+
+  Features:
+   - Icon
+   - Focus Indicator
+
+  Callbacks:
+   - onClick
+
+  Use:
+   <Button onClick={callback} icon="iconNameHere" focusIcon={true / false}>Button Text Here</Button>
+
+*/
+
 const Button = ({
   children,
   icon,

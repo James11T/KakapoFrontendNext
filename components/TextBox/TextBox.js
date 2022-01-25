@@ -4,6 +4,25 @@ import Icon from "../Icon/Icon";
 
 import styles from "./TextBox.module.css";
 
+/* 
+
+  Custom styled text / password input
+
+  Features:
+   - Label
+   - Placeholder
+   - Icon
+   - Focus Icon
+
+  Callbacks:
+   - onChange
+   - onInput
+
+  Use:
+   <TextBox onChange={callback} onInput={callback} focusIcon={true / false} placeholder="Placeholder here" />
+
+*/
+
 const TextBox = ({
   label,
   placeholder,
