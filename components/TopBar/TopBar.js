@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import Link from "next/link";
+
+import { userContext } from "../../pages/_app";
 
 import Icon from "../Icon/Icon";
 
 import styles from "./TopBar.module.css";
 
 const TopBar = ({ toggleNav = () => {} }) => {
+  const { user } = useContext(userContext);
   return (
     <div className={styles.topBar}>
       <div className={styles.topBarHeader}>
@@ -17,6 +21,16 @@ const TopBar = ({ toggleNav = () => {} }) => {
             <div className={styles.navName}>Kakapo</div>
           </a>
         </Link>
+      </div>
+      <div className={styles.profileSection}>
+        {user.isAuthenticated && (
+          <Link href={`/profile/${user.kakapo_id}`}>
+            <a className={styles.profileLink}>
+              <Icon>person</Icon>
+              {user.display_name}
+            </a>
+          </Link>
+        )}
       </div>
     </div>
   );

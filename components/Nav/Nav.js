@@ -1,9 +1,6 @@
-import { useState } from "react";
 import className from "classnames";
-import Link from "next/link";
 
 import NavLink from "./NavLink/NavLink";
-import Icon from "../Icon/Icon";
 
 import styles from "./Nav.module.css";
 

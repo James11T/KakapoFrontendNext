@@ -1,11 +1,11 @@
 import { useState, createContext, useEffect } from "react";
-
 import Head from "next/head";
+
 import Container from "../components/Container/Container";
 import Nav from "../components/nav/Nav";
+import TopBar from "../components/TopBar/TopBar";
 
 import "../styles/globals.css";
-import TopBar from "../components/TopBar/TopBar";
 
 const userContext = createContext();
 
@@ -36,6 +36,7 @@ const App = ({ Component, pageProps }) => {
         },
       };
 
+      console.log("Fetching user from storage");
       fetch("http://localhost:5000/api/v1/user/me", fetchConfig)
         .then((res) => res.json())
         .then((data) => {
@@ -49,7 +50,8 @@ const App = ({ Component, pageProps }) => {
             token: token,
             isAuthenticated: true,
           });
-        });
+        })
+        .catch((error) => {});
     }
   }, []);
 

@@ -1,9 +1,11 @@
 .topBar {
+  display: flex;
+  align-items: center;
   position: fixed;
   width: 100%;
   border-bottom: 1px solid var(--border);
   background: white;
-  
+
   z-index: 100;
 }
 
@@ -38,4 +40,16 @@
 
 .topBarBranding img {
   height: 1.5em;
+}
+
+.profileSection {
+  margin-left: auto;
+  margin-right: 1em;
+
+  font-size: 1.2em;
+}
+
+.profileLink {
+  display: flex;
+  align-items: center;
 }
