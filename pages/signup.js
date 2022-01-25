@@ -1,7 +1,5 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
-
-import { userContext } from "./_app";
 
 import TextBox from "../components/TextBox/TextBox";
 import Button from "../components/Button/Button";
@@ -12,15 +10,20 @@ import styles from "../styles/signup.module.css";
 const SignUp = () => {
   const router = useRouter();
 
-  const [formErrors, setFormErrors] = useState({
+  const defaultErrors = {
     kakapo_id: "",
     email: "",
     password: "",
     general: "",
-  });
+  };
+  const [formErrors, setFormErrors] = useState(defaultErrors);
 
   const updateFormError = (field, error) => {
     return setFormErrors((old) => ({ ...old, [field]: error }));
+  };
+
+  const clearFormErrors = () => {
+    return setFormErrors(defaultErrors);
   };
 
   const handleOnSubmit = (event) => {
@@ -41,13 +44,15 @@ const SignUp = () => {
       body: JSON.stringify(body),
     };
 
+    clearFormErrors();
+
     fetch("http://localhost:5000/api/v1/auth/signup", fetchOptions)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
-          console.log(data.error);
           switch (data.error) {
             case "101": {
+              console.log(data.badParameters[0]);
               updateFormError(data.badParameters[0], "Invalid value");
               break;
             }
@@ -102,7 +107,7 @@ const SignUp = () => {
                   name="email"
                   focusIcon
                 />
-                <div className={styles.formError}>{formErrors.password}</div>
+                <div className={styles.formError}>{formErrors.email}</div>
               </li>
               <li>
                 <TextBox

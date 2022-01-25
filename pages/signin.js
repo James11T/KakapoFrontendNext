@@ -12,15 +12,20 @@ import styles from "../styles/signin.module.css";
 const SignIn = () => {
   const router = useRouter();
 
-  const [formErrors, setFormErrors] = useState({
+  const defaultErrors = {
     kakapo_id: "",
     password: "",
     general: "",
-  });
+  };
+  const [formErrors, setFormErrors] = useState(defaultErrors);
   const { setUser } = useContext(userContext);
 
   const updateFormError = (field, error) => {
     return setFormErrors((old) => ({ ...old, [field]: error }));
+  };
+
+  const clearFormErrors = () => {
+    return setFormErrors(defaultErrors);
   };
 
   const handleOnSubmit = (event) => {
@@ -29,7 +34,6 @@ const SignIn = () => {
     const body = {
       kakapo_id: event.target.kakapo_id.value,
       password: event.target.password.value,
-      remember: event.target.remember.checked,
     };
 
     const fetchOptions = {
@@ -41,7 +45,7 @@ const SignIn = () => {
       body: JSON.stringify(body),
     };
 
-    console.log(fetchOptions);
+    clearFormErrors();
 
     fetch("http://localhost:5000/api/v1/auth/signin", fetchOptions)
       .then((res) => res.json())
@@ -63,12 +67,22 @@ const SignIn = () => {
           }
           return;
         }
+
         setUser({
           kakapo_id: data.user.kakapo_id,
           display_name: data.user.display_name,
           token: data.token,
           isAuthenticated: true,
         });
+
+        const tokenStoreLocation = event.target.remember.checked
+          ? localStorage
+          : sessionStorage;
+
+        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
+        tokenStoreLocation.setItem("token", data.token);
+
         router.push("/");
       })
       .catch((error) => {
