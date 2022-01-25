@@ -1,0 +1,6 @@
+.expand {
+  display: inline-block;
+  margin-left: 0.2em;
+  color: blue;
+  cursor: pointer;
+}

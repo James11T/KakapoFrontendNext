@@ -22,6 +22,8 @@ const ligatureCodes = {
   signin: "&#xea77;",
   right: "&#xe5cc;",
   left: "&#xe5cb;",
+  email: "&#xe0e6;",
+  personAdd: "&#xe7fe;",
 };
 
 /*

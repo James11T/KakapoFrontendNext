@@ -31,6 +31,21 @@ const Nav = ({ open = false }) => {
             Profile
           </NavLink>
         </li>
+        <li>
+          <NavLink icon="science" href="/debug">
+            Debug
+          </NavLink>
+        </li>
+        <li>
+          <NavLink icon="personAdd" href="/signup">
+            Sign Up
+          </NavLink>
+        </li>
+        <li>
+          <NavLink icon="signin" href="/signin">
+            Sign In
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
