@@ -10,7 +10,8 @@
 
 .errorHeader {
   font-size: 16rem;
-  text-shadow: 0.3rem 0.3rem 1px var(--main-green);
+  text-shadow: 0.02em 0.02em 1px var(--main-green),
+    0.04em 0.04em 1px rgb(103, 138, 71);
 }
 
 .errorText {
