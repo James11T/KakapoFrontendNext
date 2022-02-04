@@ -9,7 +9,7 @@ const NavLink = ({ icon, children, href }) => {
     <Link href={href} className={styles.navLink}>
       <a className={styles.navLinkContainer}>
         <Icon className={styles.focusIcon}>right</Icon>
-        <Icon>{icon}</Icon>
+        <Icon className={styles.navIcon}>{icon}</Icon>
         <span className={styles.navLinkText}>{children}</span>
       </a>
     </Link>

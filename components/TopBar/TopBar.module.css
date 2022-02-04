@@ -53,3 +53,7 @@
   display: flex;
   align-items: center;
 }
+
+.menuIcon {
+  font-size: 2rem;
+}

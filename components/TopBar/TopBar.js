@@ -2,18 +2,22 @@ import { useContext } from "react";
 import Link from "next/link";
 
 import { userContext } from "../../pages/_app";
-
 import Icon from "../Icon/Icon";
 
 import styles from "./TopBar.module.css";
 
-const TopBar = ({ toggleNav = () => {} }) => {
+const TopBar = ({ toggleNav }) => {
   const { user } = useContext(userContext);
+
+  const handleMenuOnClick = (event) => {
+    toggleNav && toggleNav(event);
+  };
+
   return (
     <div className={styles.topBar}>
       <div className={styles.topBarHeader}>
-        <button onClick={toggleNav}>
-          <Icon>menu</Icon>
+        <button onClick={handleMenuOnClick}>
+          <Icon className={styles.menuIcon}>menu</Icon>
         </button>
         <Link href="/">
           <a className={styles.topBarBranding}>

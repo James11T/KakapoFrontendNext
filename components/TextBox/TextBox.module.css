@@ -10,6 +10,7 @@
   border: 1px solid var(--border);
   border-radius: var(--border-radius);
   border-top-left-radius: 0;
+  background: rgb(255, 255, 255);
 
   font-size: inherit;
 }
@@ -66,4 +67,9 @@
 
 .textBox:focus-within .focusIcon {
   transform: translateX(-90%);
+}
+
+.textBox input:autofill {
+  /* Remove firefox yellow background */
+  background: rgb(255, 255, 255);
 }
