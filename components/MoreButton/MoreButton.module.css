@@ -1,0 +1,14 @@
+.moreButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.moreButton:hover {
+  color: rgb(50, 50, 50);
+}
+
+.moreButton:active {
+  color: rgb(20, 20, 20);
+}
