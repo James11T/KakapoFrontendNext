@@ -25,10 +25,13 @@ const ligatureCodes = {
   email: "&#xe0e6;",
   personAdd: "&#xe7fe;",
   science: "&#xea4b;",
+  more: "&#xe5d4;",
+  more_vert: "&#xe5d4;",
 };
 
 /*
   Attempt to change ligature to raw icon
+  If not, fall back on ligature
 */
 
 const Icon = ({ children, className }) => {
