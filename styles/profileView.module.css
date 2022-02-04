@@ -1,0 +1,43 @@
+.profileView {
+  width: 100%;
+}
+
+.profileView header {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.profileView .headerContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileView .userPfp {
+  height: 8rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.profileView header h2 {
+  font-size: 1.2rem;
+  color: rgb(100, 100, 100);
+}
+
+.profileView .userFriendCount {
+  margin-top: auto;
+  font-size: 1.3rem;
+}
+
+.profileView .userAbout {
+  padding: 0 0.5rem;
+}
+
+.profileView .userAboutContent {
+  padding: 0 0.3rem;
+}
+
+.userPosts ul {
+  padding: 0;
+  margin: 0;
+}
