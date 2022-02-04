@@ -2,8 +2,11 @@ import { useContext } from "react";
 
 import { userContext } from "./_app";
 import TextTruncator from "../components/TextTruncator/TextTruncator";
+import PostControl from "../components/Post/PostControl/PostControl";
 
 import styles from "../styles/debug.module.css";
+import MoreButton from "../components/MoreButton/MoreButton";
+import PostThumbnail from "../components/PostThumbnail/PostThumbnail";
 
 const notSetText = "Not set";
 
@@ -37,6 +40,8 @@ const Debug = () => {
           </li>
         </ul>
       </div>
+      <h2>Component Testing</h2>
+      <PostThumbnail />
     </div>
   );
 };

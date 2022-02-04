@@ -1,0 +1,99 @@
+.post {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+.postCol {
+  flex: 1 1 50%;
+  min-width: 25rem;
+  padding-bottom: 0.5rem;
+
+  border-right: 1px solid var(--border);
+}
+
+.postHeader {
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.3rem 0;
+}
+
+.authorNames {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.authorDisplayName {
+  font-size: 1.2rem;
+}
+
+.authorKakapoID {
+  font-size: 0.8rem;
+  color: var(--detail);
+}
+
+.pfp {
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  height: 3rem;
+}
+
+.actionCol {
+  margin-left: auto;
+}
+
+.actionButton {
+  padding: 0.2rem;
+  border: none;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.postActionButton {
+  font-size: 1.1rem;
+}
+
+.postMedia {
+  width: 100%;
+}
+
+.postControls {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.reportControl {
+  margin-left: auto;
+}
+
+.postContent {
+  padding: 0 0.5rem;
+  color: rgb(40, 40, 40);
+  font-size: 1.1rem;
+}
+
+@media screen and (min-width: 800px) {
+  .authorDisplayName {
+    font-size: 1.5rem;
+  }
+
+  .authorKakapoID {
+    font-size: 1rem;
+  }
+
+  .pfp {
+    height: 4rem;
+  }
+
+  .postControlsButton .icon {
+    font-size: 2.2rem;
+  }
+}
+
+.commentCol {
+  flex: 1 1 50%;
+  height: 100%;
+}

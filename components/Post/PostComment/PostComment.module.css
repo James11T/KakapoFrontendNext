@@ -1,0 +1,49 @@
+.comment {
+  padding: 0.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.commentContent {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.commentNames {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.commentDisplayName {
+  font-weight: 600;
+  color: rgb(50, 50, 50);
+}
+
+.commentKakapoID {
+  color: rgb(150, 150, 150);
+}
+
+.commentPfp {
+  height: 2.75rem;
+}
+
+.commentText {
+  overflow-y: scroll;
+}
+
+.commentActionButton {
+  font-size: 1.1rem;
+}
+
+.commentControlsButton {
+  font-size: 1.2rem;
+}
+
+.commentControlsButton .icon {
+  font-size: 1.5rem;
+}
+
+.pfp {
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  height: 3rem;
+}

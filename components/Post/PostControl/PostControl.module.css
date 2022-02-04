@@ -1,0 +1,22 @@
+.postControl {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1rem;
+
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.postControl:hover {
+  color: rgb(50, 50, 50);
+}
+
+.postControl:active {
+  color: rgb(20, 20, 20);
+}
+
+.postControlValue {
+  font-size: 1.3rem;
+}
