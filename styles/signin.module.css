@@ -1,7 +1,17 @@
+.signIn {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.signIn > * {
+  padding: 0 2rem;
+}
+
 .signInArea {
-  width: min(40rem, calc(100% - 2rem));
-  margin: 0 auto;
   margin-top: 1em;
+  border-right: 1px solid var(--details);
+  flex: 1 1 60%;
 }
 
 .formHeading {
@@ -34,4 +44,19 @@
 .formError {
   color: rgb(179, 38, 22);
   min-height: 1.3rem;
+}
+
+.providerButtons {
+  margin: 0;
+  padding: 0;
+  margin-top: 2rem;
+  list-style-type: none;
+}
+
+.providerButtons li {
+  margin-bottom: 0.6rem;
+}
+
+.oauthArea {
+  flex: 1 1 40%;
 }

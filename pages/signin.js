@@ -8,6 +8,7 @@ import Button from "../components/Button/Button";
 import CheckBox from "../components/CheckBox/CheckBox";
 
 import styles from "../styles/signin.module.css";
+import OAuthButton from "../components/OAuthButton/OAuthButton";
 
 const SignIn = () => {
   const router = useRouter();
@@ -144,6 +145,19 @@ const SignIn = () => {
             </ul>
           </fieldset>
         </form>
+      </div>
+      <div className={styles.oauthArea}>
+        <ul className={styles.providerButtons}>
+          <li>
+            <OAuthButton provider="google" />
+          </li>
+          <li>
+            <OAuthButton provider="apple" />
+          </li>
+          <li>
+            <OAuthButton provider="facebook" />
+          </li>
+        </ul>
       </div>
     </div>
   );

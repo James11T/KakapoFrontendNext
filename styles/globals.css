@@ -32,6 +32,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 p {
   margin: 0;
 }
@@ -43,13 +47,13 @@ h4,
 h5,
 h6 {
   margin: 0;
+  font-weight: inherit;
 }
 
 .icon {
   font-family: "Material Icons Round";
   font-weight: inherit;
   font-style: normal;
-  font-size: 1.8em;
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
