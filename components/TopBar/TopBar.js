@@ -1,13 +1,12 @@
-import { useContext } from "react";
 import Link from "next/link";
 
-import { userContext } from "../../pages/_app";
 import Icon from "../Icon/Icon";
 
 import styles from "./TopBar.module.css";
+import { useUser } from "../../hooks/user";
 
-const TopBar = ({ toggleNav }) => {
-  const { user } = useContext(userContext);
+const TopBar = ({ toggleNav, navOpen }) => {
+  const [user] = useUser();
 
   const handleMenuOnClick = (event) => {
     toggleNav && toggleNav(event);
@@ -17,7 +16,9 @@ const TopBar = ({ toggleNav }) => {
     <div className={styles.topBar}>
       <div className={styles.topBarHeader}>
         <button onClick={handleMenuOnClick}>
-          <Icon className={styles.menuIcon}>menu</Icon>
+          <Icon className={styles.menuIcon}>
+            {navOpen ? "menuOpen" : "menu"}
+          </Icon>
         </button>
         <Link href="/">
           <a className={styles.topBarBranding}>

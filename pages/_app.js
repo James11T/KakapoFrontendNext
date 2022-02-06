@@ -72,7 +72,7 @@ const App = ({ Component, pageProps }) => {
       </Head>
       <userContext.Provider value={{ user, setUser }}>
         <Nav open={navOpen} />
-        <TopBar toggleNav={handleNavToggle} />
+        <TopBar toggleNav={handleNavToggle} navOpen={navOpen} />
         <Container>
           <Component {...pageProps} />
         </Container>

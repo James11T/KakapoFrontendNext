@@ -27,6 +27,8 @@ const ligatureCodes = {
   science: "&#xea4b;",
   more: "&#xe5d4;",
   more_vert: "&#xe5d4;",
+  menu: "&#xe5d2;",
+  menuOpen: "&#xe9bd;",
 };
 
 /*
