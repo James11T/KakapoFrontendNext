@@ -1,23 +1,16 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 
+import { UserProvider } from "../hooks/user";
 import Container from "../components/Container/Container";
 import Nav from "../components/nav/Nav";
 import TopBar from "../components/TopBar/TopBar";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 import "../styles/globals.css";
 
-const userContext = createContext();
-
 const App = ({ Component, pageProps }) => {
   const [navOpen, setNavOpen] = useState(false);
-
-  const [user, setUser] = useState({
-    kakapo_id: "",
-    display_name: "",
-    token: "",
-    isAuthenticated: false,
-  });
 
   useEffect(() => {
     // Check for token is localStorage and sessionStorage
@@ -70,16 +63,19 @@ const App = ({ Component, pageProps }) => {
           rel="stylesheet"
         />
       </Head>
-      <userContext.Provider value={{ user, setUser }}>
+      <UserProvider>
         <Nav open={navOpen} />
         <TopBar toggleNav={handleNavToggle} navOpen={navOpen} />
         <Container>
-          <Component {...pageProps} />
+          {pageProps.errorStatus ? (
+            <ErrorPage code={pageProps.errorStatus} />
+          ) : (
+            <Component {...pageProps} />
+          )}
         </Container>
-      </userContext.Provider>
+      </UserProvider>
     </>
   );
 };
 
-export { userContext };
 export default App;

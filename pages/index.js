@@ -1,12 +1,10 @@
-import { useContext } from "react";
 import Head from "next/head";
 
-import { userContext } from "./_app";
-
 import styles from "../styles/index.module.css";
+import { useUser } from "../hooks/user";
 
 const Home = ({ count }) => {
-  const { user } = useContext(userContext);
+  const { user } = useUser();
 
   return (
     <>

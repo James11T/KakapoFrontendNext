@@ -1,14 +1,13 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
-
-import { userContext } from "./_app";
+import { useUser } from "../hooks/user";
 
 import TextBox from "../components/TextBox/TextBox";
 import Button from "../components/Button/Button";
 import CheckBox from "../components/CheckBox/CheckBox";
+import OAuthButton from "../components/OAuthButton/OAuthButton";
 
 import styles from "../styles/signin.module.css";
-import OAuthButton from "../components/OAuthButton/OAuthButton";
 
 const SignIn = () => {
   const router = useRouter();
@@ -19,7 +18,7 @@ const SignIn = () => {
     general: "",
   };
   const [formErrors, setFormErrors] = useState(defaultErrors);
-  const { setUser } = useContext(userContext);
+  const { setUser } = useUser();
 
   const updateFormError = (field, error) => {
     return setFormErrors((old) => ({ ...old, [field]: error }));

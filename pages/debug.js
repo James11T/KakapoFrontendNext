@@ -1,17 +1,13 @@
-import { useContext } from "react";
-
-import { userContext } from "./_app";
+import { useUser } from "../hooks/user";
 import TextTruncator from "../components/TextTruncator/TextTruncator";
-import PostControl from "../components/Post/PostControl/PostControl";
 
-import styles from "../styles/debug.module.css";
-import MoreButton from "../components/MoreButton/MoreButton";
 import PostThumbnail from "../components/PostThumbnail/PostThumbnail";
+import styles from "../styles/debug.module.css";
 
 const notSetText = "Not set";
 
 const Debug = () => {
-  const { user } = useContext(userContext);
+  const { user } = useUser();
 
   return (
     <div className={styles.debug}>
@@ -40,8 +36,6 @@ const Debug = () => {
           </li>
         </ul>
       </div>
-      <h2>Component Testing</h2>
-      <PostThumbnail />
     </div>
   );
 };

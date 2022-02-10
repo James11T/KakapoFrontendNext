@@ -1,10 +1,22 @@
-import { useContext } from "react";
-import { userContext } from "../pages/_app";
+import { useState, useContext, createContext } from "react";
 
-const useUser = () => {
-  const { user, setUser } = useContext(userContext);
+const userContext = createContext();
 
-  return [user, setUser];
+const UserProvider = ({ children }) => {
+  const [user, setUser] = useState({
+    kakapo_id: "",
+    display_name: "",
+    token: "",
+    isAuthenticated: false,
+  });
+
+  return (
+    <userContext.Provider value={{ user, setUser }}>
+      {children}
+    </userContext.Provider>
+  );
 };
 
-export { useUser };
+const useUser = () => useContext(userContext);
+
+export { UserProvider, useUser };
