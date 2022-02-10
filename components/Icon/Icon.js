@@ -29,6 +29,8 @@ const ligatureCodes = {
   more_vert: "&#xe5d4;",
   menu: "&#xe5d2;",
   menuOpen: "&#xe9bd;",
+  logout: "&#xe9ba;",
+  signout: "&#xe9ba;",
 };
 
 /*

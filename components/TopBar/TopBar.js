@@ -6,7 +6,7 @@ import styles from "./TopBar.module.css";
 import { useUser } from "../../hooks/user";
 
 const TopBar = ({ toggleNav, navOpen }) => {
-  const [user] = useUser();
+  const { user } = useUser();
 
   const handleMenuOnClick = (event) => {
     toggleNav && toggleNav(event);
@@ -28,14 +28,14 @@ const TopBar = ({ toggleNav, navOpen }) => {
         </Link>
       </div>
       <div className={styles.profileSection}>
-        {user.isAuthenticated && (
-          <Link href={`/profile/${user.kakapo_id}`}>
-            <a className={styles.profileLink}>
-              <Icon>person</Icon>
-              {user.display_name}
-            </a>
-          </Link>
-        )}
+        <Link
+          href={user.isAuthenticated ? `/profile/${user.kakapo_id}` : "/signin"}
+        >
+          <a className={styles.profileLink}>
+            <Icon className={styles.menuIcon}>person</Icon>
+            {user.isAuthenticated ? user.display_name : "Sign In"}
+          </a>
+        </Link>
       </div>
     </div>
   );
