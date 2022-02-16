@@ -26,10 +26,6 @@
   height: 2.75rem;
 }
 
-.commentText {
-  overflow-y: scroll;
-}
-
 .commentActionButton {
   font-size: 1.1rem;
 }
@@ -46,4 +42,8 @@
   border-radius: 50%;
   border: 1px solid var(--border);
   height: 3rem;
+}
+
+.contentArea {
+  flex-grow: 1;
 }

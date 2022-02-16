@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 
 import { UserProvider } from "../hooks/user";
+import { PostViewProvider } from "../hooks/postview";
 import Container from "../components/Container/Container";
 import Nav from "../components/nav/Nav";
 import TopBar from "../components/TopBar/TopBar";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import PostView from "../components/PostView/PostView";
 
 import "../styles/globals.css";
 
@@ -64,15 +66,18 @@ const App = ({ Component, pageProps }) => {
         />
       </Head>
       <UserProvider>
-        <Nav open={navOpen} />
-        <TopBar toggleNav={handleNavToggle} navOpen={navOpen} />
-        <Container>
-          {pageProps.errorStatus ? (
-            <ErrorPage code={pageProps.errorStatus} />
-          ) : (
-            <Component {...pageProps} />
-          )}
-        </Container>
+        <PostViewProvider>
+          <Nav open={navOpen} />
+          <TopBar toggleNav={handleNavToggle} navOpen={navOpen} />
+          <Container>
+            {pageProps.errorStatus ? (
+              <ErrorPage code={pageProps.errorStatus} />
+            ) : (
+              <Component {...pageProps} />
+            )}
+          </Container>
+          <PostView />
+        </PostViewProvider>
       </UserProvider>
     </>
   );

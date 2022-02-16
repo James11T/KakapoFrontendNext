@@ -1,4 +1,5 @@
 import MoreButton from "../../MoreButton/MoreButton";
+import TextTruncator from "../../TextTruncator/TextTruncator";
 import PostControl from "../PostControl/PostControl";
 
 import styles from "./PostComment.module.css";
@@ -8,7 +9,7 @@ const PostComment = ({ comment }) => {
     <div className={styles.comment}>
       <div className={styles.commentContent}>
         <img src={comment.author.pfp} alt="commenter" className={styles.pfp} />
-        <div>
+        <div className={styles.contentArea}>
           <div className={styles.commentNames}>
             <div className={styles.commentDisplayName}>
               {comment.author.display_name}
@@ -17,7 +18,9 @@ const PostComment = ({ comment }) => {
               @{comment.author.kakapo_id}
             </div>
           </div>
-          <div className={styles.commentText}>{comment.content}</div>
+          <div className={styles.commentText}>
+            <TextTruncator maxLength={100}>{comment.content}</TextTruncator>
+          </div>
         </div>
         <div className={styles.commentAction}>
           <MoreButton />

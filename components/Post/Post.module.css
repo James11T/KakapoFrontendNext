@@ -1,26 +1,21 @@
 .post {
   display: flex;
-  flex-wrap: wrap;
-  border: 1px solid var(--border);
+  flex-direction: column;
   border-radius: var(--border-radius);
-}
-
-.postCol {
-  flex: 1 1 50%;
-  min-width: 25rem;
+  background: white;
   padding-bottom: 0.5rem;
-
-  border-right: 1px solid var(--border);
 }
 
 .postHeader {
   display: flex;
+  width: 100%;
   gap: 0.2rem;
-  padding: 0.3rem 0;
+  padding: 0.4rem 0.3rem;
 }
 
 .authorNames {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: center;
 }
@@ -40,10 +35,6 @@
   height: 3rem;
 }
 
-.actionCol {
-  margin-left: auto;
-}
-
 .actionButton {
   padding: 0.2rem;
   border: none;
@@ -56,13 +47,21 @@
   font-size: 1.1rem;
 }
 
-.postMedia {
-  width: 100%;
-}
-
 .postControls {
   display: flex;
   gap: 0.6rem;
+}
+
+.postMediaSection {
+  display: flex;
+  justify-content: center;
+  max-height: 35rem;
+  background: rgb(5, 5, 5);
+}
+
+.postMedia {
+  object-fit: cover;
+  max-width: 100%;
 }
 
 .reportControl {
@@ -70,9 +69,16 @@
 }
 
 .postContent {
-  padding: 0 0.5rem;
+  padding: 0 0.3rem;
   color: rgb(40, 40, 40);
   font-size: 1.1rem;
+}
+
+.postDate {
+  padding: 0 0.2rem;
+  color: rgb(90, 90, 90);
+  font-style: italic;
+  font-size: 0.8em;
 }
 
 @media screen and (min-width: 800px) {
@@ -91,9 +97,4 @@
   .postControlsButton .icon {
     font-size: 2.2rem;
   }
-}
-
-.commentCol {
-  flex: 1 1 50%;
-  height: 100%;
 }

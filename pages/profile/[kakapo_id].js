@@ -1,18 +1,26 @@
 import Link from "next/link";
+import { useEffect } from "react";
 
-import Post from "../../components/Post/Post";
+import { usePostView } from "../../hooks/postview";
+import PostThumbnail from "../../components/PostThumbnail/PostThumbnail";
 
 import styles from "../../styles/profileView.module.css";
 
-const testPost = {
-  content: "Test Content ".repeat(20),
-  author: {
-    kakapo_id: "kakapo_id",
-    display_name: "display name",
-  },
-};
-
 const ProfileView = ({ user }) => {
+  const { setPost } = usePostView();
+  useEffect(() => {
+    setPost(
+      {
+        author: {
+          display_name: "James",
+          kakapo_id: "James",
+        },
+        content: "Hello",
+      },
+      true
+    );
+  }, []);
+
   return (
     <div className={styles.profileView}>
       <header>
@@ -28,17 +36,31 @@ const ProfileView = ({ user }) => {
       </header>
       <main>
         {user.about && (
-          <div className={styles.userAbout}>
+          <section className={styles.userAbout}>
             <h3>About</h3>
             <div className={styles.userAboutContent}>{user.about}</div>
-          </div>
+          </section>
         )}
-        <div className={styles.userPosts}>
+        <section className={styles.userPosts}>
           <h3>Posts</h3>
           <ul>
-            <Post post={testPost} />
+            <li>
+              <PostThumbnail />
+            </li>
+            <li>
+              <PostThumbnail />
+            </li>
+            <li>
+              <PostThumbnail />
+            </li>
+            <li>
+              <PostThumbnail />
+            </li>
+            <li>
+              <PostThumbnail />
+            </li>
           </ul>
-        </div>
+        </section>
       </main>
     </div>
   );
@@ -52,19 +74,6 @@ const errorProfile = {
       display_name: "Error",
     },
   },
-};
-
-const getErrorCodeResponse = (errorCode) => {
-  switch (errorCode) {
-    case 404: {
-      return {
-        notFound: true,
-      };
-    }
-    default: {
-      return errorProfile;
-    }
-  }
 };
 
 const getServerSideProps = async (ctx) => {
@@ -86,23 +95,26 @@ const getServerSideProps = async (ctx) => {
       fetchOptions
     );
 
-    const data = await res.json();
-
     if (res.ok) {
+      const data = await res.json();
       return {
         props: {
           user: data.user,
         },
       };
-    } else {
+    }
+
+    if (res.status === "404") {
       return {
-        props: {
-          user: getErrorCodeResponse(res.status),
-        },
+        notFound: true,
       };
     }
   } catch {
-    return getErrorCodeResponse(500);
+    return {
+      props: {
+        errorStatus: res.status,
+      },
+    };
   }
 };
 
