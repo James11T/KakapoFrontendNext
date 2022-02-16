@@ -1,15 +1,9 @@
-const yesNoBool = (bool, capitalized = true, colored = false) => {
-  let output;
+const yesNoBool = (bool, capitalized = true) => {
   if (capitalized) {
-    output = bool ? "Yes" : "No";
-  } else {
-    output = bool ? "yes" : "no";
+    return bool ? "Yes" : "No";
   }
 
-  if (colored) {
-    return <span style={{ color: bool ? "green" : "red" }}>{output}</span>;
-  }
-  return output;
+  return bool ? "yes" : "no";
 };
 
 export { yesNoBool };

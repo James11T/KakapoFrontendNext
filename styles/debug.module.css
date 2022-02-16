@@ -18,3 +18,13 @@
   list-style-type: none;
   border-left: 1px solid var(--details);
 }
+
+.apiResponseResult {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.mutedResult {
+  color: rgb(105, 105, 105);
+}

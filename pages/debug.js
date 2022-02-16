@@ -2,20 +2,24 @@ import { useEffect, useState } from "react";
 import { useUser } from "../hooks/user";
 
 import TextTruncator from "../components/TextTruncator/TextTruncator";
+import LoadingIcon from "../components/LoadingIcon/LoadingIcon";
 
 import styles from "../styles/debug.module.css";
-import { yesNoBool } from "../utils/strings";
-import { isApiResponding } from "../utils/api";
+import YesNoBool from "../components/YesNoBool/YesNoBool";
+import { getApiPing } from "../utils/api";
 
 const notSetText = "Not set";
 
 const Debug = () => {
   const { user } = useUser();
-  const [isApiOnline, setApiOnline] = useState(false);
+  const [apiPing, setapiPing] = useState(-1);
+  const [isWaiting, setIsWaiting] = useState(false);
 
   const checkApiStatus = async () => {
-    const isResponding = await isApiResponding();
-    setApiOnline(isResponding);
+    setIsWaiting(true);
+    const apiPing = await getApiPing();
+    setIsWaiting(false);
+    setapiPing(apiPing);
   };
 
   useEffect(() => {
@@ -32,7 +36,13 @@ const Debug = () => {
           <ul>
             <li>
               <h4>Is responding</h4>
-              <p>{yesNoBool(isApiOnline, true, true)}</p>
+              <div className={styles.apiResponseResult}>
+                <LoadingIcon isLoading={isWaiting} />
+                <YesNoBool colored={true}>{apiPing > 0}</YesNoBool>
+                <span className={styles.mutedResult}>
+                  ({apiPing > 0 ? Math.floor(apiPing) : "0"}ms)
+                </span>
+              </div>
             </li>
           </ul>
         </div>
@@ -51,7 +61,9 @@ const Debug = () => {
             </li>
             <li>
               <h4>Is Authenticated</h4>
-              <p>{yesNoBool(user.isAuthenticated)}</p>
+              <p>
+                <YesNoBool>{user.isAuthenticated}</YesNoBool>
+              </p>
             </li>
 
             <li>

@@ -33,6 +33,10 @@ const ligatureCodes = {
   signout: "&#xe9ba;",
   close: "&#xe5cd;",
   x: "&#xe5cd;",
+  autorenew: "&#xe863;",
+  refresh: "&#xe863;",
+  check: "&#xe876;",
+  done: "&#xe876;",
 };
 
 /*

@@ -10,7 +10,8 @@ const timeoutFetch = (url, options, timeout = 2000) => {
   return fetchPromise;
 };
 
-const isApiResponding = async () => {
+const getApiPing = async () => {
+  const startTime = Date.now();
   try {
     await timeoutFetch(
       "http://localhost:5000/api/v1/ping",
@@ -19,10 +20,10 @@ const isApiResponding = async () => {
       },
       2000
     );
-    return true;
+    return Date.now() - startTime;
   } catch (error) {
-    return false;
+    return -1;
   }
 };
 
-export { isApiResponding };
+export { getApiPing };
