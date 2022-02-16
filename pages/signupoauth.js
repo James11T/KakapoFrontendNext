@@ -1,15 +1,31 @@
+import { useState } from "react";
 import { useRouter } from "next/router";
 
 import TextBox from "../components/TextBox/TextBox";
 import Button from "../components/Button/Button";
 import CheckBox from "../components/CheckBox/CheckBox";
+import OAuthProviders from "../components/OAuthProviders/OAuthProviders";
 
-import styles from "../styles/authpage.module.css";
-import { useErrors } from "../hooks/errors";
+import styles from "../styles/signup.module.css";
 
 const SignUp = () => {
   const router = useRouter();
-  const { errors, setError, clearAllErrors } = useErrors();
+
+  const defaultErrors = {
+    kakapo_id: "",
+    email: "",
+    password: "",
+    general: "",
+  };
+  const [formErrors, setFormErrors] = useState(defaultErrors);
+
+  const updateFormError = (field, error) => {
+    return setFormErrors((old) => ({ ...old, [field]: error }));
+  };
+
+  const clearFormErrors = () => {
+    return setFormErrors(defaultErrors);
+  };
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -29,7 +45,7 @@ const SignUp = () => {
       body: JSON.stringify(body),
     };
 
-    clearAllErrors();
+    clearFormErrors();
 
     fetch("http://localhost:5000/api/v1/auth/signup", fetchOptions)
       .then((res) => res.json())
@@ -38,15 +54,15 @@ const SignUp = () => {
           switch (data.error) {
             case "101": {
               console.log(data.badParameters[0]);
-              setError(data.badParameters[0], "Invalid value");
+              updateFormError(data.badParameters[0], "Invalid value");
               break;
             }
             case "114": {
-              setError("kakapo_id", "This Kakapo ID is already taken.");
+              updateFormError("kakapo_id", "This Kakapo ID is already taken.");
               break;
             }
             default: {
-              setError("general", data.message);
+              updateFormError("general", data.message);
             }
           }
           return;
@@ -57,7 +73,7 @@ const SignUp = () => {
       })
       .catch((error) => {
         console.error(error);
-        setError(
+        updateFormError(
           "general",
           "An error occurred when contacting when the server."
         );
@@ -65,13 +81,13 @@ const SignUp = () => {
   };
 
   return (
-    <div className={styles.authPage}>
-      <div className={styles.authPageArea}>
+    <div className={styles.signUp}>
+      <div className={styles.signUpArea}>
         <div className={styles.formHeading}>
           <h1>Sign Up</h1>
           <p>Create a new Kakapo account!</p>
         </div>
-        <form onSubmit={handleOnSubmit}>
+        <form onSubmit={handleOnSubmit} className={styles.signUpForm}>
           <fieldset>
             <ul>
               <li>
@@ -82,7 +98,7 @@ const SignUp = () => {
                   name="kakapo_id"
                   focusIcon
                 />
-                <div className={styles.formError}>{errors.kakapo_id}</div>
+                <div className={styles.formError}>{formErrors.kakapo_id}</div>
               </li>
               <li>
                 <TextBox
@@ -92,7 +108,7 @@ const SignUp = () => {
                   name="email"
                   focusIcon
                 />
-                <div className={styles.formError}>{errors.email}</div>
+                <div className={styles.formError}>{formErrors.email}</div>
               </li>
               <li>
                 <TextBox
@@ -103,7 +119,7 @@ const SignUp = () => {
                   focusIcon
                   password
                 />
-                <div className={styles.formError}>{errors.password}</div>
+                <div className={styles.formError}>{formErrors.password}</div>
               </li>
               <li>
                 <TextBox
@@ -114,7 +130,9 @@ const SignUp = () => {
                   focusIcon
                   password
                 />
-                <div className={styles.formError}>{errors.confirmPassword}</div>
+                <div className={styles.formError}>
+                  {formErrors.confirmPassword}
+                </div>
               </li>
               <li>
                 <CheckBox defaultValue={true} name="remember" focusIcon>
@@ -122,7 +140,7 @@ const SignUp = () => {
                 </CheckBox>
               </li>
               <li>
-                <div className={styles.formError}>{errors.general}</div>
+                <div className={styles.formError}>{formErrors.general}</div>
                 <Button
                   type="submit"
                   icon="personAdd"
@@ -135,6 +153,9 @@ const SignUp = () => {
             </ul>
           </fieldset>
         </form>
+      </div>
+      <div className={styles.oauthArea}>
+        <OAuthProviders />
       </div>
     </div>
   );

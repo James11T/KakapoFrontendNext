@@ -5,14 +5,29 @@ import { useUser } from "../hooks/user";
 import TextBox from "../components/TextBox/TextBox";
 import Button from "../components/Button/Button";
 import CheckBox from "../components/CheckBox/CheckBox";
+import OAuthButton from "../components/OAuthButton/OAuthButton";
 
-import styles from "../styles/authpage.module.css";
-import { useErrors } from "../hooks/errors";
+import styles from "../styles/signin.module.css";
+import OAuthProviders from "../components/OAuthProviders/OAuthProviders";
 
 const SignIn = () => {
   const router = useRouter();
-  const { errors, setError, clearAllErrors } = useErrors();
+
+  const defaultErrors = {
+    kakapo_id: "",
+    password: "",
+    general: "",
+  };
+  const [formErrors, setFormErrors] = useState(defaultErrors);
   const { setUser } = useUser();
+
+  const updateFormError = (field, error) => {
+    return setFormErrors((old) => ({ ...old, [field]: error }));
+  };
+
+  const clearFormErrors = () => {
+    return setFormErrors(defaultErrors);
+  };
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -31,7 +46,7 @@ const SignIn = () => {
       body: JSON.stringify(body),
     };
 
-    clearAllErrors();
+    clearFormErrors();
 
     fetch("http://localhost:5000/api/v1/auth/signin", fetchOptions)
       .then((res) => res.json())
@@ -40,15 +55,15 @@ const SignIn = () => {
           console.log(data.error);
           switch (data.error) {
             case "104": {
-              setError("kakapo_id", "Unknown Kakapo ID.");
+              updateFormError("kakapo_id", "Unknown Kakapo ID.");
               break;
             }
             case "400": {
-              setError("password", "Incorrect password.");
+              updateFormError("password", "Incorrect password.");
               break;
             }
             default: {
-              setError("general", data.message);
+              updateFormError("general", data.message);
             }
           }
           return;
@@ -73,7 +88,7 @@ const SignIn = () => {
       })
       .catch((error) => {
         console.error(error);
-        setError(
+        updateFormError(
           "general",
           "An error occurred when contacting when the server."
         );
@@ -81,13 +96,13 @@ const SignIn = () => {
   };
 
   return (
-    <div className={styles.authPage}>
-      <div className={styles.authPageArea}>
+    <div className={styles.signIn}>
+      <div className={styles.signInArea}>
         <div className={styles.formHeading}>
           <h1>Sign In</h1>
           <p>Welcome back to Kakapo!</p>
         </div>
-        <form onSubmit={handleOnSubmit}>
+        <form onSubmit={handleOnSubmit} className={styles.signInForm}>
           <fieldset>
             <ul>
               <li>
@@ -98,7 +113,7 @@ const SignIn = () => {
                   name="kakapo_id"
                   focusIcon
                 />
-                <div className={styles.formError}>{errors.kakapo_id}</div>
+                <div className={styles.formError}>{formErrors.kakapo_id}</div>
               </li>
               <li>
                 <TextBox
@@ -109,7 +124,7 @@ const SignIn = () => {
                   focusIcon
                   password
                 />
-                <div className={styles.formError}>{errors.password}</div>
+                <div className={styles.formError}>{formErrors.password}</div>
               </li>
               <li>
                 <CheckBox defaultValue={true} name="remember" focusIcon>
@@ -117,7 +132,7 @@ const SignIn = () => {
                 </CheckBox>
               </li>
               <li>
-                <div className={styles.formError}>{errors.general}</div>
+                <div className={styles.formError}>{formErrors.general}</div>
                 <Button
                   type="submit"
                   icon="signin"
@@ -130,6 +145,9 @@ const SignIn = () => {
             </ul>
           </fieldset>
         </form>
+      </div>
+      <div className={styles.oauthArea}>
+        <OAuthProviders />
       </div>
     </div>
   );

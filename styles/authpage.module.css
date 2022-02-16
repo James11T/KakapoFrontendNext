@@ -1,7 +1,6 @@
-.signUpArea {
-  width: min(40rem, calc(100% - 2rem));
-  margin: 0 auto;
-  margin-top: 1em;
+.authPage {
+  justify-content: center;
+  height: 100%;
 }
 
 .formHeading {
@@ -10,23 +9,19 @@
   font-weight: 100;
 }
 
-.signUpForm {
-  margin-top: 2em;
-}
-
-.signUpForm fieldset {
+.authPage form fieldset {
   border: none;
   padding: 0;
   margin: 0;
 }
 
-.signUpForm ul {
+.authPage form ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.signUpForm button {
+.authPage form button {
   width: min(23rem, 100%);
   margin: 0 auto;
 }

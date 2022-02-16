@@ -31,6 +31,8 @@ const ligatureCodes = {
   menuOpen: "&#xe9bd;",
   logout: "&#xe9ba;",
   signout: "&#xe9ba;",
+  close: "&#xe5cd;",
+  x: "&#xe5cd;",
 };
 
 /*
