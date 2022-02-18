@@ -1,10 +1,12 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { useUser } from "../hooks/user";
 
 import TextBox from "../components/TextBox/TextBox";
 import Button from "../components/Button/Button";
 import CheckBox from "../components/CheckBox/CheckBox";
+
+import PersonRounded from "@mui/icons-material/PersonRounded";
+import KeyRounded from "@mui/icons-material/KeyRounded";
 
 import styles from "../styles/authpage.module.css";
 import { useErrors } from "../hooks/errors";
@@ -94,7 +96,7 @@ const SignIn = () => {
                 <TextBox
                   placeholder="BobSmith0"
                   label="Kakapo ID"
-                  icon="person"
+                  icon={PersonRounded}
                   name="kakapo_id"
                   focusIcon
                 />
@@ -104,7 +106,7 @@ const SignIn = () => {
                 <TextBox
                   placeholder="password123"
                   label="Password"
-                  icon="key"
+                  icon={KeyRounded}
                   name="password"
                   focusIcon
                   password
@@ -120,7 +122,7 @@ const SignIn = () => {
                 <div className={styles.formError}>{errors.general}</div>
                 <Button
                   type="submit"
-                  icon="signin"
+                  icon={PersonRounded}
                   focusIcon
                   className={styles.signInButton}
                 >

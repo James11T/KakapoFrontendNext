@@ -1,9 +1,6 @@
 .loadingIcon {
   position: relative;
   display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  font-size: 1rem;
 }
 
 .loadingSpinner {

@@ -1,26 +1,9 @@
 import { useState } from "react";
 
-import Icon from "../Icon/Icon";
+import KeyboardArrowRightRounded from "@mui/icons-material/KeyboardArrowRightRounded";
+import CheckRounded from "@mui/icons-material/CheckRounded";
 
 import styles from "./CheckBox.module.css";
-
-/* 
-
-  Custom styled check box
-
-  Features:
-   - Default Value
-   - Focus Indicator
-   - Checked Text
-
-  Callbacks:
-   - onChange
-   - onInput
-
-  Use:
-   <CheckBox onChange={callback} onInput={callback} focusIcon={true / false} checkedText="I am on">Check Box text here</CheckBox>
-
-*/
 
 const CheckBox = ({
   children,
@@ -44,7 +27,7 @@ const CheckBox = ({
 
   return (
     <label className={styles.checkBox} htmlFor={name}>
-      {focusIcon && <Icon className={styles.focusIcon}>right</Icon>}
+      {focusIcon && <KeyboardArrowRightRounded className={styles.focusIcon} />}
       {!!checkedText && isChecked ? checkedText : children}
       <input
         type="checkbox"
@@ -55,7 +38,7 @@ const CheckBox = ({
         id={name}
       />
       <span className={styles.checkBoxBorder}>
-        <Icon className={styles.checkIcon}>check</Icon>
+        <CheckRounded className={styles.checkIcon} />
       </span>
     </label>
   );

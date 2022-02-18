@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import Icon from "../Icon/Icon";
+import KeyboardArrowRightRounded from "@mui/icons-material/KeyboardArrowRightRounded";
 
 import styles from "./Button.module.css";
 
@@ -22,7 +22,7 @@ import styles from "./Button.module.css";
 
 const Button = ({
   children,
-  icon,
+  icon: Icon,
   className,
   onClick,
   focusIcon,
@@ -38,8 +38,8 @@ const Button = ({
       onClick={handleOnClick}
       type={type}
     >
-      {focusIcon && <Icon className={styles.focusIcon}>right</Icon>}
-      {icon && <Icon className={styles.buttonIcon}>{icon}</Icon>}
+      {focusIcon && <KeyboardArrowRightRounded className={styles.focusIcon} />}
+      {Icon && <Icon className={styles.buttonIcon} />}
       {children}
     </button>
   );

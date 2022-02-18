@@ -1,4 +1,4 @@
-import Icon from "../Icon/Icon";
+import MoreRounded from "@mui/icons-material/MoreRounded";
 
 import styles from "./MoreButton.module.css";
 
@@ -9,7 +9,7 @@ const MoreButton = ({ onClick }) => {
 
   return (
     <button className={styles.moreButton} onClick={handleOnClick}>
-      <Icon>more</Icon>
+      <MoreRounded />
     </button>
   );
 };

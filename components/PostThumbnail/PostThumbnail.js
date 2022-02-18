@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { useState } from "react";
 
-import Icon from "../Icon/Icon";
+import FavoriteRounded from "@mui/icons-material/FavoriteRounded";
+import ChatIcon from "@mui/icons-material/QuestionAnswerRounded";
 
 import styles from "./PostThumbnail.module.css";
 
@@ -13,10 +13,10 @@ const PostThumbnail = () => {
 
         <div className={styles.postThumbnailInfo}>
           <span>
-            <Icon>like</Icon>0
+            <FavoriteRounded />0
           </span>
           <span>
-            <Icon>comment</Icon>0
+            <ChatIcon />0
           </span>
         </div>
       </div>

@@ -4,6 +4,10 @@ import TextBox from "../components/TextBox/TextBox";
 import Button from "../components/Button/Button";
 import CheckBox from "../components/CheckBox/CheckBox";
 
+import PersonRounded from "@mui/icons-material/PersonRounded";
+import EmailRounded from "@mui/icons-material/AlternateEmailRounded";
+import KeyRounded from "@mui/icons-material/KeyRounded";
+
 import styles from "../styles/authpage.module.css";
 import { useErrors } from "../hooks/errors";
 
@@ -78,7 +82,7 @@ const SignUp = () => {
                 <TextBox
                   placeholder="BobSmith0"
                   label="Kakapo ID"
-                  icon="person"
+                  icon={PersonRounded}
                   name="kakapo_id"
                   focusIcon
                 />
@@ -88,7 +92,7 @@ const SignUp = () => {
                 <TextBox
                   placeholder="example@kakaposocial.com"
                   label="Email"
-                  icon="email"
+                  icon={EmailRounded}
                   name="email"
                   focusIcon
                 />
@@ -98,7 +102,7 @@ const SignUp = () => {
                 <TextBox
                   placeholder="password123"
                   label="Password"
-                  icon="key"
+                  icon={KeyRounded}
                   name="password"
                   focusIcon
                   password
@@ -109,7 +113,7 @@ const SignUp = () => {
                 <TextBox
                   placeholder="password123"
                   label="Confirm Password"
-                  icon="key"
+                  icon={KeyRounded}
                   name="confirmpassword"
                   focusIcon
                   password
@@ -125,7 +129,7 @@ const SignUp = () => {
                 <div className={styles.formError}>{errors.general}</div>
                 <Button
                   type="submit"
-                  icon="personAdd"
+                  icon={PersonRounded}
                   focusIcon
                   className={styles.signUpButton}
                 >
