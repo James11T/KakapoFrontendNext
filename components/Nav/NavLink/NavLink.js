@@ -1,16 +1,16 @@
 import Link from "next/link";
 
-import Icon from "../../Icon/Icon";
+import KeyboardArrowRightRounded from "@mui/icons-material/KeyboardArrowRightRounded";
 
 import styles from "./NavLink.module.css";
 
-const NavLink = ({ icon, children, href }) => {
+const NavLink = ({ icon: Icon, href, children: text }) => {
   return (
     <Link href={href} className={styles.navLink}>
       <a className={styles.navLinkContainer}>
-        <Icon className={styles.focusIcon}>right</Icon>
-        <Icon className={styles.navIcon}>{icon}</Icon>
-        <span className={styles.navLinkText}>{children}</span>
+        <KeyboardArrowRightRounded className={styles.focusIcon} />
+        <Icon className={styles.navIcon} />
+        <span className={styles.navLinkText}>{text}</span>
       </a>
     </Link>
   );

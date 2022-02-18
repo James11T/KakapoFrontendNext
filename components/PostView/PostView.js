@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 import { usePostView } from "../../hooks/postview";
 import Post from "../Post/Post";
-import Icon from "../Icon/Icon";
+import CloseRounded from "@mui/icons-material/CloseRounded";
 
 import styles from "./PostView.module.css";
 
@@ -34,7 +34,7 @@ const PostView = () => {
         {postViewState.post && <Post post={postViewState.post} />}
       </div>
       <button className={styles.closeButton} onClick={handleCloseOnClick}>
-        <Icon>close</Icon>
+        <CloseRounded />
       </button>
     </div>
   );

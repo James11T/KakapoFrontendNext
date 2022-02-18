@@ -1,32 +1,13 @@
 import classNames from "classnames";
 
-import Icon from "../Icon/Icon";
+import KeyboardArrowRightRounded from "@mui/icons-material/KeyboardArrowRightRounded";
 
 import styles from "./TextBox.module.css";
-
-/* 
-
-  Custom styled text / password input
-
-  Features:
-   - Label
-   - Placeholder
-   - Icon
-   - Focus Icon
-
-  Callbacks:
-   - onChange
-   - onInput
-
-  Use:
-   <TextBox onChange={callback} onInput={callback} focusIcon={true / false} placeholder="Placeholder here" />
-
-*/
 
 const TextBox = ({
   label,
   placeholder,
-  icon,
+  icon: Icon,
   onChange,
   onInput,
   className,
@@ -50,11 +31,11 @@ const TextBox = ({
           {label}
         </label>
       )}
-      {icon && <Icon className={styles.inputIcon}>{icon}</Icon>}
-      {focusIcon && <Icon className={styles.focusIcon}>right</Icon>}
+      {Icon && <Icon className={styles.inputIcon} />}
+      {focusIcon && <KeyboardArrowRightRounded className={styles.focusIcon} />}
       <input
         placeholder={placeholder}
-        className={classNames({ [styles.inputWithIcon]: !!icon })}
+        className={classNames({ [styles.inputWithIcon]: !!Icon })}
         onChange={handleOnChange}
         onInput={handleOnInput}
         name={name}

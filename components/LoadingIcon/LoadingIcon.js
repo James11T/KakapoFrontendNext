@@ -1,15 +1,17 @@
 import classNames from "classnames";
-import Icon from "../Icon/Icon";
+
+import RefreshRounded from "@mui/icons-material/RefreshRounded";
+import DoneRounded from "@mui/icons-material/DoneRounded";
 
 import styles from "./LoadingIcon.module.css";
 
 const LoadingIcon = ({ isLoading }) => {
+  const Icon = isLoading ? RefreshRounded : DoneRounded;
+
   return (
     <div className={styles.loadingIcon}>
       <div className={classNames(isLoading && styles.isLoading)}>
-        <Icon className={styles.loadingSpinner}>
-          {isLoading ? "refresh" : "done"}
-        </Icon>
+        <Icon className={styles.loadingSpinner} />
       </div>
     </div>
   );

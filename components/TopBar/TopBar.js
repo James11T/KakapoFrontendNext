@@ -1,6 +1,8 @@
 import Link from "next/link";
 
-import Icon from "../Icon/Icon";
+import PersonRounded from "@mui/icons-material/PersonRounded";
+import MenuRounded from "@mui/icons-material/MenuRounded";
+import MenuOpenRounded from "@mui/icons-material/MenuOpenRounded";
 
 import styles from "./TopBar.module.css";
 import { useUser } from "../../hooks/user";
@@ -12,13 +14,13 @@ const TopBar = ({ toggleNav, navOpen }) => {
     toggleNav && toggleNav(event);
   };
 
+  const MenuIcon = navOpen ? MenuOpenRounded : MenuRounded;
+
   return (
     <div className={styles.topBar}>
       <div className={styles.topBarHeader}>
         <button onClick={handleMenuOnClick}>
-          <Icon className={styles.menuIcon}>
-            {navOpen ? "menuOpen" : "menu"}
-          </Icon>
+          <MenuIcon className={styles.menuIcon} />
         </button>
         <Link href="/">
           <a className={styles.topBarBranding}>
@@ -32,7 +34,7 @@ const TopBar = ({ toggleNav, navOpen }) => {
           href={user.isAuthenticated ? `/profile/${user.kakapo_id}` : "/signin"}
         >
           <a className={styles.profileLink}>
-            <Icon className={styles.menuIcon}>person</Icon>
+            <PersonRounded className={styles.menuIcon} />
             {user.isAuthenticated ? user.display_name : "Sign In"}
           </a>
         </Link>
